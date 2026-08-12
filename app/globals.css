@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fcf6f5;
+  color: #1f1a1b;
+}
+
+.dark body {
+  background-color: #16100f;
+  color: #fbeceb;
+}
+
+::selection {
+  background-color: #c9a227;
+  color: #1f1a1b;
+}
+
+:focus-visible {
+  outline: 2px solid #990011;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.dark :focus-visible {
+  outline-color: #c9a227;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Org chart connector lines — a classic nested ul/li tree diagram.
+   Works to any depth automatically: `.org-chart ul ul::before` matches
+   every nesting level from the second one down, so a new level added
+   at runtime just inherits the same rules. */
+.org-chart,
+.org-chart ul,
+.org-chart li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.org-chart > ul,
+.org-chart ul {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.org-chart li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 32px 16px 0 16px;
+}
+
+.org-chart li::before,
+.org-chart li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 32px;
+  border-top: 1px solid rgba(31, 26, 27, 0.28);
+}
+
+.org-chart li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid rgba(31, 26, 27, 0.28);
+}
+
+.org-chart li:only-child::before,
+.org-chart li:only-child::after {
+  display: none;
+}
+
+.org-chart > ul > li:only-child {
+  padding-top: 0;
+}
+
+.org-chart li:first-child::before,
+.org-chart li:last-child::after {
+  border: 0 none;
+}
+
+.org-chart li:last-child::before {
+  border-right: 1px solid rgba(31, 26, 27, 0.28);
+  border-radius: 0 6px 0 0;
+}
+
+.org-chart li:first-child::after {
+  border-radius: 6px 0 0 0;
+}
+
+.org-chart ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 32px;
+  border-left: 1px solid rgba(31, 26, 27, 0.28);
+}
+
+/* Hide connectors on sibling drop zone placeholders */
+.org-chart li.sibling-drop-zone::before,
+.org-chart li.sibling-drop-zone::after {
+  display: none !important;
+}
+
+/* Downward arrow on vertical connector */
+.org-chart ul ul::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid rgba(31, 26, 27, 0.35);
+}
