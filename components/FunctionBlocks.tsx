@@ -86,18 +86,18 @@ const COLOR_OPTIONS = [
 ];
 
 const DEFAULT_BLOCKS: FunctionBlock[] = [
-  { id: "fn-1", label: "Broadcasting & Transmission", icon: "tv", color: "#990011" },
-  { id: "fn-2", label: "Content Production", icon: "clapperboard", color: "#5C000A" },
-  { id: "fn-3", label: "News & Current Affairs", icon: "newspaper", color: "#2F3C7E" },
-  { id: "fn-4", label: "Digital Media & OTT", icon: "globe", color: "#7B2D8E" },
-  { id: "fn-5", label: "Marketing & Sales", icon: "megaphone", color: "#D4611E" },
-  { id: "fn-6", label: "Finance & Accounts", icon: "banknote", color: "#0F6E56" },
-  { id: "fn-7", label: "Human Resources & Admin", icon: "users", color: "#C9A227" },
-  { id: "fn-8", label: "Legal & Compliance", icon: "scale", color: "#1B4965" },
-  { id: "fn-9", label: "IT & Technology", icon: "server", color: "#5F5E5A" },
-  { id: "fn-10", label: "Network & Cyber Security", icon: "shield", color: "#990011" },
-  { id: "fn-11", label: "Creative & Graphics", icon: "palette", color: "#7B2D8E" },
-  { id: "fn-12", label: "Distribution & Affiliates", icon: "radio", color: "#2D6A4F" },
+  { id: "fn-1", label: "IT Infrastructure", icon: "server", color: "#990011" },
+  { id: "fn-2", label: "Cyber Security", icon: "shield", color: "#5C000A" },
+  { id: "fn-3", label: "DevOps & CI/CD", icon: "code", color: "#2F3C7E" },
+  { id: "fn-4", label: "Cloud & Hosting", icon: "cloud", color: "#7B2D8E" },
+  { id: "fn-5", label: "Network Administration", icon: "network", color: "#D4611E" },
+  { id: "fn-6", label: "Database Management", icon: "database", color: "#0F6E56" },
+  { id: "fn-7", label: "Software Development", icon: "cpu", color: "#C9A227" },
+  { id: "fn-8", label: "IT Support & Helpdesk", icon: "headphones", color: "#1B4965" },
+  { id: "fn-9", label: "System Administration", icon: "hard-drive", color: "#5F5E5A" },
+  { id: "fn-10", label: "Web & Digital Platforms", icon: "globe", color: "#990011" },
+  { id: "fn-11", label: "AI & Automation", icon: "monitor", color: "#7B2D8E" },
+  { id: "fn-12", label: "Data & Analytics", icon: "wifi", color: "#2D6A4F" },
 ];
 
 function BlockForm({
