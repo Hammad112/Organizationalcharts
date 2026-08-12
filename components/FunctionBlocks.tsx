@@ -207,7 +207,14 @@ export function FunctionBlocks({ editMode }: { editMode: boolean }) {
     async function load() {
       const cloud = await cloudLoad(STORAGE_KEY);
       if (cloud && Array.isArray(cloud) && cloud.length > 0) {
-        setBlocks(cloud as FunctionBlock[]);
+        const existing = cloud as FunctionBlock[];
+        const migrated = existing.map((block) => {
+          const match = DEFAULT_BLOCKS.find((d) => d.id === block.id);
+          if (match) return { ...block, label: match.label, icon: match.icon, color: match.color };
+          return block;
+        });
+        setBlocks(migrated);
+        cloudSave(STORAGE_KEY, migrated);
       } else {
         setBlocks(DEFAULT_BLOCKS);
         cloudSave(STORAGE_KEY, DEFAULT_BLOCKS);
