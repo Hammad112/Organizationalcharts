@@ -573,9 +573,10 @@ export default function Page() {
       </div>
 
       {rawActiveView?.auto && (
-        <div className="px-6 sm:px-10">
+        <>
+          <div className="h-20" />
           <FunctionBlocks editMode={editMode} />
-        </div>
+        </>
       )}
 
       <DragPanel view={activeView} onReparent={handleReparent} />

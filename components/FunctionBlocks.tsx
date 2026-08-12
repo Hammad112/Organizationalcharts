@@ -281,17 +281,17 @@ export function FunctionBlocks({ editMode }: { editMode: boolean }) {
   if (!loaded) return null;
 
   return (
-    <div className="mt-8 mb-4">
-      <div className="mb-4 flex items-center gap-3">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-brand-ink/10 to-transparent dark:via-brand-cream/10" />
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-slate">
+    <div className="fixed bottom-0 left-0 right-0 z-10 border-t border-brand-ink/10 bg-brand-cream/95 backdrop-blur-sm py-2 px-4 dark:border-brand-cream/10 dark:bg-[#1a1211]/95">
+      <div className="mb-1.5 flex items-center justify-center gap-2">
+        <div className="h-px w-8 bg-brand-ink/10 dark:bg-brand-cream/10" />
+        <h3 className="text-[9px] font-semibold uppercase tracking-wider text-brand-slate">
           Organization Functions
         </h3>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-brand-ink/10 to-transparent dark:via-brand-cream/10" />
+        <div className="h-px w-8 bg-brand-ink/10 dark:bg-brand-cream/10" />
       </div>
 
       {/* Blocks row */}
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex flex-wrap gap-1.5 justify-center">
         {blocks.map((block) => {
           const IconComp = FUNCTION_ICON_MAP[block.icon] || Globe;
           const isEditing = editingId === block.id;
@@ -306,38 +306,38 @@ export function FunctionBlocks({ editMode }: { editMode: boolean }) {
                 );
                 e.dataTransfer.effectAllowed = "copy";
               }}
-              className={`group relative flex cursor-grab items-center gap-2.5 rounded-xl border px-4 py-3 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:cursor-grabbing ${
+              className={`group relative flex cursor-grab items-center gap-1.5 rounded-lg border px-2 py-1 transition-all hover:shadow-sm hover:-translate-y-0.5 active:cursor-grabbing ${
                 isEditing
-                  ? "border-brand-red ring-2 ring-brand-red/20 bg-white dark:bg-[#221a19]"
+                  ? "border-brand-red ring-1 ring-brand-red/20 bg-white dark:bg-[#221a19]"
                   : "border-brand-ink/8 bg-white dark:border-brand-cream/8 dark:bg-[#221a19]"
               }`}
             >
               <div
-                className="flex h-9 w-9 items-center justify-center rounded-lg"
+                className="flex h-5 w-5 items-center justify-center rounded"
                 style={{ backgroundColor: block.color + "18" }}
               >
-                <IconComp size={18} style={{ color: block.color }} />
+                <IconComp size={11} style={{ color: block.color }} />
               </div>
-              <span className="text-sm font-medium text-brand-ink dark:text-brand-cream">
+              <span className="text-[10px] font-medium text-brand-ink dark:text-brand-cream">
                 {block.label}
               </span>
               <div
-                className="ml-1 h-1.5 w-1.5 rounded-full"
+                className="ml-0.5 h-1 w-1 rounded-full"
                 style={{ backgroundColor: block.color }}
               />
               {editMode && (
-                <div className="absolute -top-1.5 -right-1.5 flex gap-1 opacity-0 transition group-hover:opacity-100">
+                <div className="absolute -top-1 -right-1 flex gap-0.5 opacity-0 transition group-hover:opacity-100">
                   <button
                     onClick={() => startEdit(block)}
-                    className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-gold text-white shadow-sm"
+                    className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold text-white shadow-sm"
                   >
-                    <Pencil size={9} />
+                    <Pencil size={7} />
                   </button>
                   <button
                     onClick={() => handleRemove(block.id)}
-                    className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white shadow-sm"
+                    className="flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-white shadow-sm"
                   >
-                    <X size={10} />
+                    <X size={8} />
                   </button>
                 </div>
               )}
@@ -348,10 +348,10 @@ export function FunctionBlocks({ editMode }: { editMode: boolean }) {
         {editMode && !adding && !editingId && (
           <button
             onClick={startAdd}
-            className="flex items-center gap-2 rounded-xl border border-dashed border-brand-ink/15 px-4 py-3 text-sm text-brand-slate transition hover:border-brand-red hover:text-brand-red dark:border-brand-cream/15"
+            className="flex items-center gap-1 rounded-lg border border-dashed border-brand-ink/15 px-2 py-1 text-[10px] text-brand-slate transition hover:border-brand-red hover:text-brand-red dark:border-brand-cream/15"
           >
-            <Plus size={15} />
-            Add Function
+            <Plus size={10} />
+            Add
           </button>
         )}
       </div>
