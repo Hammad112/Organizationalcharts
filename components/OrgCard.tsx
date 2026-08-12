@@ -223,6 +223,7 @@ export function OrgCard({
   searchMatches,
   onAddNodeAt,
   onDropFunction,
+  onRemoveFunction,
 }: {
   node: OrgNode;
   parentId: string | null;
@@ -244,6 +245,7 @@ export function OrgCard({
   onInsertLayer?: (parentId: string, data: { type: string; label: string; color: string }) => void;
   onAddNodeAt?: (parentId: string, index: number, data: { type: string; label: string; color: string }) => void;
   onDropFunction?: (nodeId: string, fn: { label: string; icon: string; color: string }) => void;
+  onRemoveFunction?: (nodeId: string, fnLabel: string) => void;
 }) {
   const isSearchMatch = searchMatches && searchMatches.size > 0 && searchMatches.has(node.id);
   const isSearchDimmed = searchMatches && searchMatches.size > 0 && !searchMatches.has(node.id);
@@ -377,12 +379,19 @@ export function OrgCard({
                       return (
                         <div
                           key={`${fn.label}-${i}`}
-                          className="flex items-center gap-0.5 rounded-full px-1.5 py-0.5"
+                          className="group/fn flex items-center gap-0.5 rounded-full px-1.5 py-0.5"
                           style={{ backgroundColor: fn.color + "18" }}
                           title={fn.label}
                         >
                           <FnIcon size={8} style={{ color: fn.color }} />
                           <span className="text-[8px] font-medium leading-none" style={{ color: fn.color }}>{fn.label}</span>
+                          {editMode && onRemoveFunction && (
+                            <button
+                              onClick={(e) => { e.stopPropagation(); onRemoveFunction(node.id, fn.label); }}
+                              className="ml-0.5 hidden text-[8px] leading-none opacity-60 hover:opacity-100 group-hover/fn:inline"
+                              style={{ color: fn.color }}
+                            >×</button>
+                          )}
                         </div>
                       );
                     })}
@@ -528,6 +537,7 @@ export function OrgCard({
                   searchMatches={searchMatches}
                   onAddNodeAt={onAddNodeAt}
                   onDropFunction={onDropFunction}
+                  onRemoveFunction={onRemoveFunction}
                 />
               </li>
               {onAddNodeAt && (

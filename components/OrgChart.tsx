@@ -29,6 +29,7 @@ export function OrgChart({
   searchMatches,
   onAddNodeAt,
   onDropFunction,
+  onRemoveFunction,
   onRefreshFromCloud,
 }: {
   view: ViewDef;
@@ -52,6 +53,7 @@ export function OrgChart({
   onInsertLayer: (parentId: string, data: { type: string; label: string; color: string }) => void;
   onAddNodeAt: (parentId: string, index: number, data: { type: string; label: string; color: string }) => void;
   onDropFunction?: (nodeId: string, fn: { label: string; icon: string; color: string }) => void;
+  onRemoveFunction?: (nodeId: string, fnLabel: string) => void;
   onRefreshFromCloud?: () => Promise<void>;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -280,6 +282,7 @@ export function OrgChart({
                       onInsertLayer={onInsertLayer}
                       onAddNodeAt={onAddNodeAt}
                       onDropFunction={onDropFunction}
+                      onRemoveFunction={onRemoveFunction}
                     />
                   </li>
                 </ul>

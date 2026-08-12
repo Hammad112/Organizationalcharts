@@ -425,6 +425,16 @@ export default function Page() {
     store.updateNode(viewId, nodeId, { functions: [...existing, fn] });
   }
 
+  function handleRemoveFunction(nodeId: string, fnLabel: string) {
+    const viewId = resolveViewId(nodeId);
+    if (!viewId) return;
+    const view = views.find((v) => v.id === viewId);
+    if (!view) return;
+    const node = findNode(view.roots, nodeId);
+    const updated = (node?.functions ?? []).filter((f) => f.label !== fnLabel);
+    store.updateNode(viewId, nodeId, { functions: updated });
+  }
+
   function handleCopyAll() {
     if (!activeView || rawActiveView?.auto) return;
     const cloned = JSON.parse(JSON.stringify(activeView.roots)) as OrgNode[];
@@ -568,6 +578,7 @@ export default function Page() {
           onInsertLayer={handleInsertLayer}
           onAddNodeAt={handleAddNodeAt}
           onDropFunction={handleDropFunction}
+          onRemoveFunction={handleRemoveFunction}
           onRefreshFromCloud={store.refreshFromCloud}
         />
       </div>

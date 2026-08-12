@@ -88,7 +88,7 @@ export function SaveBar({
   if (!dirty) return null;
 
   return (
-    <div className="sticky top-0 z-40 flex items-center justify-between gap-3 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 px-5 py-2.5 shadow-md">
+    <div className="sticky top-0 z-40 flex items-center justify-between gap-3 bg-gradient-to-r from-brand-red via-brand-maroon to-brand-red px-5 py-2.5 shadow-md">
       <div className="flex items-center gap-2.5">
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
           <Save size={14} className="text-white" />
@@ -113,7 +113,7 @@ export function SaveBar({
           <button
             onClick={() => { setDropdownOpen((v) => !v); setNewVersionMode(false); setNewName(""); }}
             disabled={saving}
-            className="flex items-center gap-1.5 rounded-lg bg-white px-4 py-1.5 text-xs font-bold text-orange-600 shadow transition hover:bg-orange-50 disabled:opacity-60"
+            className="flex items-center gap-1.5 rounded-lg bg-white px-4 py-1.5 text-xs font-bold text-brand-red shadow transition hover:bg-brand-blush disabled:opacity-60"
           >
             {saving ? (
               <Loader2 size={13} className="animate-spin" />
@@ -129,7 +129,7 @@ export function SaveBar({
               {/* Save to Main */}
               <button
                 onClick={() => handleSave("__main__")}
-                className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition hover:bg-orange-50 dark:hover:bg-orange-950/20"
+                className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition hover:bg-brand-blush dark:hover:bg-brand-red/10"
               >
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-red/10">
                   <Save size={14} className="text-brand-red" />
